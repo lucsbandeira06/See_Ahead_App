@@ -19,7 +19,8 @@ function classNames(...classes) {
 export default function NavBar() {
 
   return (
-    <Disclosure as="nav" className="rounded-md dark:bg-orange-700 w-full inset-x-0 top-0 opacity-90">
+    //NavBar template from tailwind css documentation
+    <Disclosure as="nav" className="rounded-md dark:bg-orange-700 w-full inset-x-0 top-0 opacity-90 shadow-xl">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -35,8 +36,11 @@ export default function NavBar() {
                   )}
                 </Disclosure.Button>
               </div>
+
+              {/* Web menu bar */}
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
+                  {/* Logo mobile */}
                   <img
                     className="block h-10 w-auto lg:hidden"
                     src={SeeAheadLogo}
@@ -50,6 +54,8 @@ export default function NavBar() {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
+                    {/* menu options / might delete later */}
+                    {/* using navigation to map the objects within array navigation */}
                     {navigation.map((item) => (
                       <a
                         key={item.name}
@@ -100,7 +106,7 @@ export default function NavBar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="UserDetails.js"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile

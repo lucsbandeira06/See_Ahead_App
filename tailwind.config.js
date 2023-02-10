@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.{html,js,jsx,ts,tsx}",
+    "./public/*.{html}"
   
   ],
   theme: {
@@ -12,9 +13,9 @@ module.exports = {
         lg: '976px',
         xl: '1440px',
       },
-      // backgroundImage: {
-      //   'background': "url('../public/bg_seeAhead.png')"
-      // }
+      backgroundImage: {
+        'background': "url('../public/bg_seeAhead.png')"
+      }
     },
   },
   plugins: [],
