@@ -1,6 +1,10 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
+import { getFirestore,
+doc,
+getDoc,
+setDoc} from 'firebase/firestore'
 
 //Firebase configuration + Firebase libraries
 const firebaseConfig = {
@@ -14,11 +18,17 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 
 //TODO: Set up analytics later
 const analytics = getAnalytics(app);
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
-export {app, auth}
+export const db = getFirestore()
+
+export const createUserDocumentFromAuth = async (userAuth) => {
+   const userDocRef = doc(db, 'users', userAuth.uid)
+
+   console.log(userDocRef)
+}

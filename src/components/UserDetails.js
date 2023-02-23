@@ -4,7 +4,10 @@ import {auth} from '../firebaseConfig'
 
 const UserDetails = () => {
 
-    const [authUser, setAuthUser] = useState(null)
+    const [authUser, setAuthUser] = useState({})
+    // const location = useLocation();
+    // const data = location.state;
+    // console.log(data);
 
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
@@ -28,6 +31,7 @@ const UserDetails = () => {
 
     return (
        <div>{ authUser ? <div className="container w-fit mx-auto bg-blue-400 rounded-xl shadow-md p-10 m-10">
+           
            <p>{`Signed In as ${authUser.email}`}</p>
             <button onClick={UserSignOut} className="bg-blue-400 rounded-md text-white font-bold border-2 border-sky-600 w-40 h-8 m-4 shadow-xl">Sign out</button>
             </div> : <div className="container w-fit mx-auto bg-blue-400 rounded-xl shadow-md p-10 m-10"><p>Signed Out</p></div> }

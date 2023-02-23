@@ -1,8 +1,11 @@
-import { Fragment } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon, BookOpenIcon } from '@heroicons/react/24/outline'
 import SeeAheadLogo from '../assets/SeeAheadLogo.png'
 import React from "react"
+import { Link } from 'react-router-dom'
+import { onAuthStateChanged, signOut } from '@firebase/auth'
+import {auth} from '../firebaseConfig'
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: false },
@@ -17,6 +20,28 @@ function classNames(...classes) {
 
 
 export default function NavBar() {
+
+  const [authUser, setAuthUser] = useState(null)
+
+    useEffect(() => {
+        const listen = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setAuthUser(user)
+            } else {
+                setAuthUser(null)
+            }
+        })
+
+        return () => {
+            listen()
+        }
+    }, [])
+
+    const UserSignOut = () => {
+      signOut(auth).then(() => {
+          console.log('sign out successful')
+      }).catch(error => console.log(error))
+  }
 
   return (
     //NavBar template from tailwind css documentation
@@ -41,6 +66,7 @@ export default function NavBar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   {/* Logo mobile */}
+                  <Link className="logo-container" to="/">
                   <img
                     className="block h-10 w-auto lg:hidden"
                     src={SeeAheadLogo}
@@ -51,6 +77,7 @@ export default function NavBar() {
                     src={SeeAheadLogo}
                     alt="Your Company"
                   />
+                  </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -72,6 +99,7 @@ export default function NavBar() {
                   </div>
                 </div>
               </div>
+              {/* Bookings button and Icon */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
@@ -81,7 +109,7 @@ export default function NavBar() {
                   <BookOpenIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
 
-                {/* Profile dropdown */}
+                {/* Profile dropdown mobile*/}
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -93,6 +121,8 @@ export default function NavBar() {
                       />
                     </Menu.Button>
                   </div>
+
+                  {/* profile dropdown web */}
                   <Transition
                     as={Fragment}
                     enter="transition ease-out duration-100"
@@ -105,33 +135,43 @@ export default function NavBar() {
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
+                          <Link className="login-link" to='/SignIn'>
                           <a
-                            href="UserDetails.js"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile
                           </a>
+                          </Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
+                          <Link>
                           <a
-                            href="#"
+                            
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Settings
                           </a>
+                          </Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
-                        {({ active }) => (
+                        {authUser ? ({ active }) => (
+                          
                           <a
-                            href="#"
+                            onClick={UserSignOut}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign out
                           </a>
-                        )}
+                          ): ({ active }) => (
+                          <a 
+                          className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                        >
+                          Signed out
+                          </a>
+                          )}
                       </Menu.Item>
                     </Menu.Items>
                   </Transition>
@@ -139,7 +179,7 @@ export default function NavBar() {
               </div>
             </div>
           </div>
-
+                  {/* passing list of navigation array defined at the beginning of this file */}
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item) => (
@@ -158,7 +198,9 @@ export default function NavBar() {
               ))}
             </div>
           </Disclosure.Panel>
+  
         </>
+      
       )}
     </Disclosure>
   )
