@@ -45,7 +45,7 @@ export default function NavBar() {
 
   return (
     //NavBar template from tailwind css documentation
-    <Disclosure as="nav" className="rounded-md dark:bg-orange-700 w-full inset-x-0 top-0 opacity-90 shadow-xl">
+    <Disclosure as="nav" className="rounded-md dark:bg-orange-500 w-full inset-x-0 top-0 opacity-90 shadow-xl">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

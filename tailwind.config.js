@@ -14,7 +14,7 @@ module.exports = {
         xl: '1440px',
       },
       backgroundImage: {
-        'background': "url('../public/bg_seeAhead.png')"
+        'background': "url('./public/bg_See2.png')"
       }
     },
   },

@@ -11,6 +11,7 @@ function App() {
 
   return (
     
+      <div className="App-container bg-[url('../public/bg_See2.png')] bg-cover w-full h-full">
       <Routes>
         <Route path='/' element={<Navigation/>}>
           <Route index element={<HotelHome/>}/>
@@ -20,7 +21,7 @@ function App() {
         </Route>
 
       </Routes>
-
+      </div>
   );
 }
 export default App;
