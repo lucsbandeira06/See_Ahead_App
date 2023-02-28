@@ -1,76 +1,116 @@
-import { useState, useEffect, Fragment } from "react";
-import SearchBox from "../search-box";
+import { useState, Fragment } from "react";
 import CardList from "../../components/card-list/cardList";
 import UserDetails from "../../components/UserDetails";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { GEO_API_URL, geoApiOptions } from "../../searchBarAPIconfig";
+import { AsyncPaginate } from "react-select-async-paginate";
 
-
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 
 
 export default function HotelHome(){
 
-    const [searchField, setSearchField] = useState('')
+    // const [searchField, setSearchField] = useState('')
+    const [destinationSearch, setDestinationSearch] = useState();
     const [destination, setDestination] = useState([])
-    const [checkIn, setCheckIn] = useState()
-    const [checkOut, setCheckOut] = useState()
+    const [checkIn, setCheckIn] = useState("")
+    const [checkOut, setCheckOut] = useState("")
     const [adultCount, setAdultCount] = useState(0)
     const [childrenCount, setChildrenCount] = useState(0)
     const [roomsCount, setRoomsCount] = useState(0)
-    const [filteredDestination, setFilteredDestination] = useState(destination)
-  
-    useEffect(()=> {
-      fetch('https://jsonplaceholder.typicode.com/users')
-      .then((Response)=> Response.json())
-      .then((users)=> setDestination(users))
-    }, [])
-  
-    useEffect(() => {
-      const newfilteredDestination = destination.filter((destination) => {
-        return destination.name.toLocaleLowerCase().includes(searchField) 
-    })
-  
-    setFilteredDestination(newfilteredDestination)
-    }, [destination, searchField])
 
-    const OnsearchChange = (event) =>{
-        const searchFieldString = event.target.value.toLocaleLowerCase()
-        setSearchField(searchFieldString)
-      }
+    //TODO: Set filters for hotels
+    const [filteredDestination, setFilteredDestination] = useState(destination)
+
+
+    //TODO: Pass data to booking.com API and then render places accordingly
+    const SearchEngineHandler = () => {
+      console.log("check-in", checkIn)
+      console.log("check-out", checkOut)
+      console.log("number of adults", adultCount)
+      console.log("number of children", childrenCount)
+      console.log("number of rooms", roomsCount)
+      console.log("destination", destinationSearch)
+    }
+    
+    // Function to define a state for destination
+    const searchHandleOnChange = (searchData) => {
+      setDestinationSearch(searchData);
+    };
+
+    //Cities API fetch with minimum population of 15 thousand people. Input value = user input
+    const loadOptions = (inputValue) => {
+      return fetch(
+          `${GEO_API_URL}/cities?minPopulation=15000&namePrefix=${inputValue}`,
+          geoApiOptions
+        )
+          .then((response) => response.json())
+          .then((response) => {
+            return {
+              options: response.data.map((city) => {
+                return {
+                  value: `${city.latitude} ${city.longitude}`,
+                  label: `${city.name}, ${city.countryCode}`,
+                };
+              }),
+            };
+          });
+      };
+
+    // useEffect(()=> {
+    //   fetch('https://jsonplaceholder.typicode.com/users')
+    //   .then((Response)=> Response.json())
+    //   .then((users)=> setDestination(users))
+    // }, [])
+  
+    // useEffect(() => {
+    //   const newfilteredDestination = destination.filter((destination) => {
+    //     return destination.name.toLocaleLowerCase().includes(searchField) 
+    // })
+  
+    // setFilteredDestination(newfilteredDestination)
+    // }, [destination, searchField])
+
+    // const OnsearchChange = (event) =>{
+    //     const searchFieldString = event.target.value.toLocaleLowerCase()
+    //     setSearch(searchFieldString)
+    //   }
 
     return (
 
     <div>
 
-        <div className="container w-full h-80 mx-auto bg-blue-400 rounded-xl shadow-md p-10 mt-12">
+        <div className="container w-full h-96 mx-auto bg-blue-400 rounded-xl shadow-md p-10 mt-2">
           <p className="text-3xl text-gray-800 font-bold mb-5">
           Welcome to SeeAhead!
           </p>
           <p className="text-gray-600 text-lg">
-          Book your accommodation for the best prices in the market!
+          Book your accommodation for the best prices in the market! 
           </p>
         </div>
         
-        <div className="search-box flex h-24 w-9/12 mx-auto p-4 -mt-6     rounded-xl bg-orange-500 items-center space-x-1 justify-center m-4">
+        <div className="search-box flex h-20 w-11/12 mx-auto p-4 -mt-6     rounded-xl bg-orange-500 items-center space-x-1 justify-center m-4">
           
             {/* Calling Search box component that contains all API's */}
-            <SearchBox 
-            onChangeHandler={OnsearchChange} 
+            <AsyncPaginate
+              className="w-2/5 rounded-md h-auto shadow-lg border-2 border-orange-300"
+              placeholder="What is your destination?"
+              debounceTimeout={600}
+              loadOptions={loadOptions}
+              value={destinationSearch}
+              onChange={searchHandleOnChange}
             />
             
             {/* check-in check-out container */}
             <div className="checks-container bg-white h-10 rounded-md flex shadow-lg text-slate-900 border-orange-300 border-2">
             
             <label className="p-1 pt-1.5 text-slate-600">Check in</label>
-            <input type="date" className="rounded-md"
+            <input type="date" className="rounded-md" value={checkIn} onChange={(e) => {setCheckIn(e.target.value)}}
             ></input>
+            
   
             <label className="p-1 pt-1.5 text-slate-600">Check out</label>
-            <input type="date" className="rounded-md"></input>
+            <input type="date" className="rounded-md" value={checkOut} onChange={(e) => {setCheckOut(e.target.value)}}></input>
             </div>
 
            {/* Guests and Rooms container  */}
@@ -93,13 +133,14 @@ export default function HotelHome(){
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
           >
-          <Menu.Items className=" right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-opacity-5 focus:outline-none text-left">
+          <Menu.Items className="z-10 mt-2 w-56 mx-auto origin-top-right rounded-md bg-white shadow-lg ring-opacity-5 focus:outline-none">
           
             <Menu.Item>
               {({ active }) => (
                 
-               <div className="inline-flex h-12 w-fit justify-between items-center text-gray-700 pl-2 pt-2 hover:bg-gray-100">
-               <p className="pr-24">Adults</p>
+               <div className="inline-flex h-12 w-56 items-center text-gray-700 pl-2 pt-2 hover:bg-gray-100 hover:rounded-md">
+
+               <p className="pr-20">Adults</p>
              
                <button className="rounded-2xl h-6 w-6 bg-orange-300 items-center text-white justify-center mx-auto"
                onClick={() => setAdultCount(adultCount - 1)}>
@@ -116,8 +157,9 @@ export default function HotelHome(){
             <Menu.Item>
             {({ active }) => (
                 
-                <div className="inline-flex h-12 justify-between items-center text-gray-700 pl-2 mx-auto hover:bg-gray-100">
-                <p className="pr-20">Children</p>
+                <div className="inline-flex h-12 w-56 items-center text-gray-700 pl-2 mx-auto hover:bg-gray-100 hover:rounded-md">
+
+                <p className="pr-16">Children</p>
               
                 <button className="rounded-2xl h-6 w-6 bg-orange-300 items-center text-white justify-center mx-auto"
                 onClick={() => setChildrenCount(childrenCount - 1)}>
@@ -134,8 +176,9 @@ export default function HotelHome(){
             <Menu.Item>
             {({ active }) => (
                 
-                <div className="inline-flex h-12  w-auto justify-between items-center text-gray-700 pl-2 mx-auto hover:bg-gray-100">
-                <p className="pr-24">Rooms</p>
+                <div className="inline-flex h-12 w-56 justify-between items-center text-gray-700 pl-2 mx-auto hover:bg-gray-100 hover:rounded-md">
+
+                <p className="pr-20">Rooms</p>
               
                 <button className="rounded-2xl h-6 w-6 bg-orange-300 items-center text-white justify-center mx-auto"
                 onClick={() => setRoomsCount(roomsCount - 1)}>
@@ -153,7 +196,7 @@ export default function HotelHome(){
             </Transition>
           </Menu>
         </div>
-            <button className="bg-blue-400 rounded-md text-white font-bold w-40 h-10 m-4 shadow-xl border-2 border-orange-300">Search</button>
+            <button className="bg-blue-400 rounded-md text-white font-bold w-40 h-10 m-4 shadow-xl border-2 border-orange-300" onClick={SearchEngineHandler}>Search</button>
         </div>
 
         <div className="cards-container w-3/5 h-80 overflow-auto mx-auto bg-blue-400 rounded-xl shadow-md p-10 m-10">

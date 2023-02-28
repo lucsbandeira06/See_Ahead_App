@@ -10,8 +10,8 @@ function App() {
 
 
   return (
-    
-      <div className="App-container bg-[url('../public/bg_See2.png')] bg-cover w-full h-full">
+
+      <div className="App-container bg-[url('../public/bg_See2.png')] bg-cover">
       <Routes>
         <Route path='/' element={<Navigation/>}>
           <Route index element={<HotelHome/>}/>

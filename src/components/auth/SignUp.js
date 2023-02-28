@@ -17,7 +17,7 @@ const SignUp = () => {
     const signUpHandler = (e) => {
         e.preventDefault()
         createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredentials) => {
+        .then(() => {
          navigate("/")
         }).catch((error) => {
             console.log(error)
@@ -32,6 +32,7 @@ const SignUp = () => {
             <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto inset-0 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+
             <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
             <h3 className="text-3xl font=semibold">Create your account  </h3>
             <Link className="signup-container" to="/">
@@ -39,7 +40,7 @@ const SignUp = () => {
             className="bg-transparent items-center border-0 text-black float-right"
             >
             <span className="text-black opacity-7 h-6 w-6 text-xl block bg-gray-400 py-0 rounded-full m-2">
-          x
+            X
             </span>
             </button>
             </Link>
@@ -67,28 +68,27 @@ const SignUp = () => {
       </form>
     </div>
     
-    <div className="items-center text-center flex flex-col p-6 border-t border-solid border-blueGray-200 rounded-b">
-    <Link className="login-container" to="/">
-    <button type="submit" 
-    className="bg-orange-400 justify-center items-center rounded-md text-white font-bold border-2 border-orange-400 w-40 h-8 m-4 shadow-xl"
-    onClick={signUpHandler}>Register</button>
-    </Link>
+    <div className="items-center text-center flex flex-col p-6 border-t         border-solid border-blueGray-200 rounded-b">
+        <Link className="login-container" to="/">
+        <button type="submit" 
+        className="bg-orange-400 justify-center items-center rounded-md text-white font-bold border-2 border-orange-400 w-40 h-8 m-4 shadow-xl"
+        onClick={signUpHandler}>Register</button>
+        </Link>
    
 
-    <p className="flex justify-center items-center">already have an account?</p>
+        <p className="flex justify-center items-center">already have an account?</p>
 
-    <Link className="signup-container" to="/SignIn">
-    <button type="submit" 
-    className="bg-blue-400 rounded-md border-sky-600 text-white font-bold w-40 h-8 m-4 shadow-xl flex justify-center items-center">Login</button>
-    </Link>
+        <Link className="signup-container" to="/SignIn">
+        <button type="submit" 
+        className="bg-blue-400 rounded-md border-sky-600 text-white font-bold w-40 h-8 m-4 shadow-xl flex justify-center items-center">Login</button>
+        </Link>
 
         </div>
-
         </div>
         </div>
     </div>
 
-</div>
+    </div>
     )
 }
 

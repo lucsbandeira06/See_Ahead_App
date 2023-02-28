@@ -5,9 +5,7 @@ import {auth} from '../firebaseConfig'
 const UserDetails = () => {
 
     const [authUser, setAuthUser] = useState({})
-    // const location = useLocation();
-    // const data = location.state;
-    // console.log(data);
+
 
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
@@ -25,7 +23,7 @@ const UserDetails = () => {
 
     const UserSignOut = () => {
         signOut(auth).then(() => {
-            console.log('sign out successful')
+            console.log('sign out successfully')
         }).catch(error => console.log(error))
     }
 

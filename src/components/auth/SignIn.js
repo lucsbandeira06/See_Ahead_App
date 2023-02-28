@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { signInWithEmailAndPassword } from '@firebase/auth'
-import {auth, createUserDocumentFromAuth} from "../../firebaseConfig"
+import {auth} from "../../firebaseConfig"
 import { Link, useNavigate } from 'react-router-dom'
 
 
@@ -50,7 +50,7 @@ const SignIn = () => {
                 <div className="relative p-6 flex-auto">
                   <form 
                   className="bg-gray-100 shadow-md text-center rounded px-8 pt-6 pb-8 w-full"
-                  onSubmit={signInHandler}>
+                  >
                     <label className="block text-black text-sm font-bold mb-1">
                       Email
                     </label>
@@ -91,7 +91,7 @@ const SignIn = () => {
             </div>
             </div>
     
-            </div>
+        </div>
     )
 }
 
