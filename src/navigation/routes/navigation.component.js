@@ -14,13 +14,14 @@ const Navigation = () => {
 
             <div className="w-full h-full">
             <Outlet/>
-            <About/>
+           
             </div>
            
             {/* <div className="about">
                 <About/>
             </div> */}
             <div className="footer">
+                <About/>
                 <Footer/>
             </div>
         </Fragment>

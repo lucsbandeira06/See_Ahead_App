@@ -103,7 +103,7 @@ export default function HotelHome(){
     <Fragment>
 
        
-        <div className="container w-full h-96 mx-auto bg-[url('https://media.istockphoto.com/id/636342562/photo/business-man-with-laptop-working-on-the-beach.jpg?b=1&s=170667a&w=0&k=20&c=Gfx1IHy_NcI4Ydgoa2co_QRGc7Iz_HAaZZt6T9xKIt4=')] overflow-hidden bg-no-repeat bg-cover rounded-xl shadow-md p-10 mt-8">
+        <div className="container w-full h-96 md:mx-auto bg-[url('https://media.istockphoto.com/id/636342562/photo/business-man-with-laptop-working-on-the-beach.jpg?b=1&s=170667a&w=0&k=20&c=Gfx1IHy_NcI4Ydgoa2co_QRGc7Iz_HAaZZt6T9xKIt4=')] overflow-hidden bg-no-repeat bg-cover shadow-md p-10">
        
           <h1 className="text-3xl text-gray-900 font-bold mb-4 mt-6 text-center">
           Welcome to SeeAhead!
@@ -244,7 +244,7 @@ export default function HotelHome(){
             </Transition>
           </Menu>
         </div>
-            <button className="bg-blue-400 rounded-md text-white font-bold w-40 h-10 m-4 drop-shadow border-2 border-orange-300 hover:bg-orange-500" onClick={SearchEngineHandler}>Search</button>
+            <button className="bg-blue-400 rounded-md text-white font-bold w-40 h-10 m-4 drop-shadow border-2 border-orange-300 hover:bg-blue-500 hover:border-blue-300" onClick={SearchEngineHandler}>Search</button>
         </div>
 
         {data.destId &&

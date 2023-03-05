@@ -27,7 +27,7 @@ const SignUp = () => {
 
     return (
 
-        <div className="sign-in-container flex h-16 w-full h-max items-center space-x-1 justify-center m-4">
+        <div className="sign-in-container flex h-16 w-full h-screen items-center space-x-1 justify-center m-4">
        
             <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto inset-0 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">

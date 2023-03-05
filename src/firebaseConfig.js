@@ -5,13 +5,13 @@ import { getFirestore } from 'firebase/firestore'
 
 //Firebase configuration + Firebase libraries
 const firebaseConfig = {
-  apiKey: "AIzaSyDY18BVdO7dNJSAED4SIKSAF0GCKvxyIGw",
-  authDomain: "seeahead-app.firebaseapp.com",
-  projectId: "seeahead-app",
-  storageBucket: "seeahead-app.appspot.com",
-  messagingSenderId: "574595046116",
-  appId: "1:574595046116:web:fed082990ff6b442866af1",
-  measurementId: "G-6Q3G1ZDJBB"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
+  measurementId: process.env.REACT_APP_measurementId
 };
 
 // Initialize Firebase
