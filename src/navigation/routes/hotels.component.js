@@ -1,6 +1,5 @@
 import { useState, Fragment } from "react";
 import Card from '../../components/card.component'
-import UserDetails from "../../components/UserDetails";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { bookingSearchCityoptions, bookingSearchCityURL } from "../../searchBarAPIconfig";
@@ -9,10 +8,10 @@ import { AsyncPaginate } from "react-select-async-paginate";
 
 
 export default function HotelHome(){
-
+  
     // const [searchField, setSearchField] = useState('')
     const [destinationSearch, setDestinationSearch] = useState([])
-    const [destination, setDestination] = useState([])
+    // const [destination, setDestination] = useState([])
 
 
     const [checkIn, setCheckIn] = useState("")
@@ -117,7 +116,7 @@ export default function HotelHome(){
           </p>
         </div>
         
-        <div className="search-box flex h-20 w-10/12 mx-auto p-4 -mt-6     rounded-xl bg-orange-400 items-center space-x-1 justify-center m-4">
+        <div className="search-box flex h-20 z-0 w-11/12 mx-auto p-4 -mt-6     rounded-xl bg-gradient-to-r from-orange-300 via-orange-400 to-orange-400 items-center space-x-1 justify-center m-4">
           
             {/* Calling Search box component that contains all API's */}
             <AsyncPaginate
@@ -132,7 +131,7 @@ export default function HotelHome(){
             {/* check-in check-out container */}
             <div className="checks-container bg-white h-10 rounded-md flex shadow-lg text-slate-900 border-orange-300 border-2">
             
-            <label className="p-1 pt-1.5 text-slate-600">Check in</label>
+            <label className="p-1 pt-1.5 flex text-slate-600">Check in</label>
             <input type="date" className="rounded-md" value={checkIn} onChange={(e) => {setCheckIn(e.target.value)}}
             ></input>
             
@@ -161,7 +160,7 @@ export default function HotelHome(){
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
           >
-          <Menu.Items className="z-10 mt-2 w-56 mx-auto origin-top-right rounded-md bg-white shadow-lg ring-opacity-5 focus:outline-none">
+          <Menu.Items className="mt-2 w-56 mx-auto origin-top-right rounded-md bg-white shadow-lg ring-opacity-5 focus:outline-none">
           
             <Menu.Item>
               {({ active }) => (
@@ -248,7 +247,7 @@ export default function HotelHome(){
         </div>
 
         {data.destId &&
-        <div className="cards-container w-10/12 h-full overflow-auto mx-auto bg-orange-400 rounded-xl p-10 m-10">
+        <div className="cards-container w-10/12 -z-10 h-full overflow-auto mx-auto bg-gradient-to-r from-orange-300 via-orange-400 to-orange-400 rounded-xl p-10 m-10">
           <div className="Destination-cards w-full h-72">
              <Card data= {data} />
           </div>

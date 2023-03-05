@@ -1,9 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
 import { createUserWithEmailAndPassword } from '@firebase/auth'
-import {auth} from "../../firebaseConfig"
+import {auth, firestore} from "../../firebaseConfig"
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router'
+import { collection, addDoc } from "firebase/firestore"; 
 
 const SignUp = () => {
 
@@ -11,23 +12,40 @@ const SignUp = () => {
 
     //useState hooks used to store new users credentials
     const[email, setEmail] = useState("")
+    const[firstName, setFirstName] = useState("")
+    const[lastName, setLastName] = useState("")
+    const[phone, setPhone] = useState(null)
+    const[birth, setBirth] = useState("")
     const[password, setPassword] = useState("")
+
+
+    
 
     //On this variable I am using the data stored in the hooks above to create a new user with email and password on Firebase.
     const signUpHandler = (e) => {
         e.preventDefault()
         createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-         navigate("/")
-        }).catch((error) => {
-            console.log(error)
+          const docRef = addDoc(collection(firestore, "Users"), {
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            phone: phone,
+            birth: birth
+          })
+          console.log("Document written with ID: ", docRef.id);
+            navigate("/")
+          }).catch((error) => {
+            alert(`${error}. Try again.`)
         })
     }
 
 
+
+
     return (
 
-        <div className="sign-in-container flex h-16 w-full h-screen items-center space-x-1 justify-center m-4">
+        <div className="sign-in-container flex items-center space-x-1 justify-center mt-24 -mb-32">
        
             <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto inset-0 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
@@ -50,6 +68,39 @@ const SignUp = () => {
       <form 
       className="bg-gray-100 shadow-md text-center rounded px-8 pt-6 pb-8 w-full"
       onSubmit={signUpHandler}>
+
+        <label className="block text-black text-sm font-bold mb-1">
+          First Name
+        </label>
+        <input type="email" placeholder="Enter your name" 
+        className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-2"
+        value={firstName}
+        onChange={(e) => {setFirstName(e.target.value)}}></input>
+
+        <label className="block text-black text-sm font-bold mb-1">
+          Last Name
+        </label>
+        <input type="email" placeholder=" Enter your last name" 
+        className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-2"
+        value={lastName}
+        onChange={(e) => {setLastName(e.target.value)}}></input>
+
+        <label className="block text-black text-sm font-bold mb-1">
+         Phone
+        </label>
+        <input type="phone" 
+        className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-2"
+        value={phone}
+        onChange={(e) => {setPhone(e.target.value)}}></input>
+
+      <label className="block text-black text-sm font-bold mb-1">
+          DoB (mm/dd/yyy)
+        </label>
+        <input type="date" 
+        className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-2"
+        value={birth}
+        onChange={(e) => {setBirth(e.target.value)}}></input>
+
         <label className="block text-black text-sm font-bold mb-1">
           Email
         </label>

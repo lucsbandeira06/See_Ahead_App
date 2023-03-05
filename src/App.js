@@ -12,7 +12,7 @@ function App() {
 
   return (
 
-      <div className="App-container bg-[url('../public/BG_3.png')] bg-cover">
+      <div className="App-container bg-[url('../public/BG_3.png')] bg-cover min-h-screen">
       <Routes>
         <Route path='/' element={<Navigation/>}>
           <Route index element={<HotelHome/>}/>

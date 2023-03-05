@@ -4,20 +4,24 @@ export default function About() {
 
     return (
         <div>
-            <ul className="flex flex-col text-center border-t-4 border-amber-500 justify-center mx-auto items-center mt-4 text-lg text-gray-800  rounded-3xl">
+            <ul className="flex flex-col text-center border-t-4 border-amber-500 justify-center mx-auto items-center mt-72 text-lg text-gray-800  rounded-3xl">
         <li>
-            <p className="p-4 hover:underline">About</p>
+            <h1 className="p-4 mt-4 mb-2 text-4xl font-light text-blue-400">About</h1>
         </li>
-        <li>
-            <p className="p-4 hover:underline">Privacy Policy</p>
-        </li>
-        <li>
-            <p className="p-4 hover:underline">Licensing</p>
-        </li>
-        <li>
-            <p className="p-4 hover:underline">Contact</p>
-        </li>
-    </ul>
+        </ul>
+            <div className="text-center text-blue-600 font-medium">
+            <p>This project was created with React and Tailwind CSS framework.</p>
+
+            <p>Search the best destinations for your trip based on your personal preferences.</p> 
+
+            <p>On this website you are able to specify your check-in, and check-out dates, as well as the number of people that will be traveling with you.  </p>
+
+            <p >Another feature of this website is that it offers weather services, such as forecast and historical weather registries.</p>
+            <p className="pb-6">customers can choose the perfect weather conditions for their trips. Wether it's skiing or surfing, you will be prepared to have fun!  </p>
+            </div>
+        
+     
+          
         </div>
     )
 }

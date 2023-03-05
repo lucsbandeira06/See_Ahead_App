@@ -13,9 +13,6 @@ module.exports = {
         lg: '976px',
         xl: '1440px',
       },
-      backgroundImage: {
-        'background': "url('./public/bg_See2.png')"
-      }
     },
   },
   plugins: [],
