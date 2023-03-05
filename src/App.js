@@ -5,18 +5,20 @@ import SignUp from "./components/auth/SignUp"
 import HotelHome from "./navigation/routes/hotels.component";
 import Navigation from './navigation/routes/navigation.component'
 import UserDetails from "./components/UserDetails";
+import Card from "./components/card.component";
 
 function App() {
 
 
   return (
 
-      <div className="App-container bg-[url('../public/bg_See2.png')] bg-cover">
+      <div className="App-container bg-[url('../public/BG_3.png')] bg-cover">
       <Routes>
         <Route path='/' element={<Navigation/>}>
           <Route index element={<HotelHome/>}/>
           <Route path='SignIn' element={<SignIn/>}></Route>
           <Route path='SignUp' element={<SignUp/>}></Route>
+          <Route path='Card' element={<Card/>}></Route>
           <Route path='UserDetails' element={<UserDetails/>}></Route>
         </Route>
 

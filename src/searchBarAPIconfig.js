@@ -1,21 +1,22 @@
 
-//GeoAPI to fetch cities around the world 
-export const geoApiOptions = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "9220a5cb53msh696d866d437bc04p1a830djsn6466600c6887",
-      "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
-    },
-  };
+export const BookingHoteloptions = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'dee87c220fmshaa315c46b987a0fp158364jsn7ad1d8fe8f32',
+		'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
+	}
+};
 
-  //booking.com API, you can see that the api key for this API is the same as the api key for dbCities as both of them come from the same place. (RapidAPI)
-export const bookingApiOptions = {
+export const bookingSearchCityoptions = {
     method: 'GET',
     headers: {
       'X-RapidAPI-Key': '9220a5cb53msh696d866d437bc04p1a830djsn6466600c6887',
       'X-RapidAPI-Host': 'booking-com.p.rapidapi.com'
     }
-  };
+};
+// URL to look for cities within booking.com
+export const bookingSearchCityURL = "https://booking-com.p.rapidapi.com/v1/hotels/locations"
+
   
   export const GEO_API_URL = "https://wft-geo-db.p.rapidapi.com/v1/geo";
   

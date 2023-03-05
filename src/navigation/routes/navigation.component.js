@@ -2,6 +2,7 @@ import React, {Fragment} from 'react'
 import { Outlet } from 'react-router-dom'
 import NavBar from '../navbar'
 import Footer from '../../components/footer'
+import About from '../../components/about'
 
 const Navigation = () => {
 
@@ -13,10 +14,12 @@ const Navigation = () => {
 
             <div className="w-full h-full">
             <Outlet/>
-
+            <About/>
             </div>
            
-
+            {/* <div className="about">
+                <About/>
+            </div> */}
             <div className="footer">
                 <Footer/>
             </div>

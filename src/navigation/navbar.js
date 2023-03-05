@@ -1,18 +1,19 @@
 import { Fragment, useState, useEffect } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon, BookOpenIcon } from '@heroicons/react/24/outline'
-import SeeAheadLogo from '../assets/SeeAheadLogo.png'
+import logo from '../assets/logo.png'
 import React from "react"
 import { Link } from 'react-router-dom'
 import { onAuthStateChanged, signOut } from '@firebase/auth'
 import {auth} from '../firebaseConfig'
 
-const navigation = [
-  { name: 'Dashboard', href: '#', current: false },
-  { name: 'Weather', href: '#', current: false },
-  { name: 'Hotels', href: '#', current: false },
-  { name: 'Hot deals', href: '#', current: false },
-]
+// const navigation = [
+//   { name: 'Dashboard', href: '#', current: false },
+//   { name: 'Weather', href: '#', current: false },
+//   { name: 'Hotels', href: '#', current: false },
+//   { name: 'Hot deals', href: '#', current: false },
+// ]
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -45,7 +46,7 @@ export default function NavBar() {
 
   return (
     //NavBar template from tailwind css documentation
-    <Disclosure as="nav" className="rounded-md dark:bg-orange-500 w-full inset-x-0 top-0 opacity-90 shadow-xl">
+    <Disclosure as="nav" className="ring-1 ring-red-400 bg-orange-400 w-full inset-x-0 top-0 shadow-xl">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -69,21 +70,21 @@ export default function NavBar() {
                   <Link className="logo-container" to="/">
                   <img
                     className="block h-10 w-auto lg:hidden"
-                    src={SeeAheadLogo}
+                    src={logo}
                     alt="Your Company"
                   />
                   <img
                     className="hidden h-10 w-auto lg:block"
-                    src={SeeAheadLogo}
+                    src={logo}
                     alt="Your Company"
                   />
                   </Link>
                 </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
+                {/* <div className="hidden sm:ml-6 sm:block">
+                  <div className="flex space-x-4"> */}
                     {/* menu options / might delete later */}
                     {/* using navigation to map the objects within array navigation */}
-                    {navigation.map((item) => (
+                    {/* {navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
@@ -95,10 +96,10 @@ export default function NavBar() {
                       >
                         {item.name}
                       </a>
-                    ))}
-                  </div>
+                    ))} */}
+                  {/* </div>
+                  </div> */}
                 </div>
-              </div>
               {/* Bookings button and Icon */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
@@ -134,43 +135,47 @@ export default function NavBar() {
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
-                        {({ active }) => (
-                          <Link className="login-link" to='/SignIn'>
-                          <a
+                        {({ active }) => ( authUser ?
+                          <Link className="userDetails-link" to='/UserDetails'>
+                          <p
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile
-                          </a>
+                          </p>
+                          </Link>   
+                          : 
+                          <Link className="login-link" to="/SignIn">
+                          <div className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}><p>Login</p></div>
                           </Link>
-                        )}
+                          )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
                           <Link>
-                          <a
+                          <p
                             
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Settings
-                          </a>
+                            Settings (Coming Soon)
+                          </p>
                           </Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {authUser ? ({ active }) => (
                           
-                          <a
+                          <p
                             onClick={UserSignOut}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
-                            Sign out
-                          </a>
+                          Sign out
+                          </p>
                           ): ({ active }) => (
-                          <a 
+                          <p 
                           className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                         >
                           Signed out
-                          </a>
+                          </p>
                           )}
                       </Menu.Item>
                     </Menu.Items>
@@ -180,7 +185,7 @@ export default function NavBar() {
             </div>
           </div>
                   {/* passing list of navigation array defined at the beginning of this file */}
-          <Disclosure.Panel className="sm:hidden">
+          {/* <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item) => (
                 <Disclosure.Button
@@ -197,7 +202,7 @@ export default function NavBar() {
                 </Disclosure.Button>
               ))}
             </div>
-          </Disclosure.Panel>
+          </Disclosure.Panel> */}
   
         </>
       

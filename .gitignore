@@ -8,6 +8,11 @@
 # testing
 /coverage
 
+#api keys
+.env 
+firebaseConfig.js
+searchBarAPIconfig.js
+
 # production
 /build
 

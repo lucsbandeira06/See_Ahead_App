@@ -3,21 +3,21 @@ import React from "react"
 export default function Footer() {
 
     return (
-<footer class="p-4 bg-white rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-orange-500 inset-x-0 bottom-0">
-    <span class="text-sm text-white sm:text-center dark:text-gray-100">© 2023 <a href="" class="hover:underline">SeeAhead™</a>. All Rights Reserved.
+<footer className="p-4 bg-orange-400 rounded-lg shadow md:flex md:items-center md:justify-between md:p-6 inset-x-0 bottom-0">
+    <span className="text-sm sm:text-center text-gray-800">© 2023 <a className="hover:underline">SeeAhead™</a>. All Rights Reserved.
     </span>
-    <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-100 sm:mt-0">
+    <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-800 sm:mt-0">
         <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+            <p  className="mr-4 hover:underline md:mr-6 ">About</p>
         </li>
         <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+            <p  className="mr-4 hover:underline md:mr-6">Privacy Policy</p>
         </li>
         <li>
-            <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+            <p  className="mr-4 hover:underline md:mr-6">Licensing</p>
         </li>
         <li>
-            <a href="#" class="hover:underline">Contact</a>
+            <p href="#" className="hover:underline">Contact</p>
         </li>
     </ul>
 </footer>

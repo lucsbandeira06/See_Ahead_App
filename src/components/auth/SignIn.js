@@ -69,7 +69,7 @@ const SignIn = () => {
                   </form>
                   </div>
 
-            <div className="items-center text-center flex flex-col p-6 border-t border-solid border-blueGray-200 rounded-b">
+            <div className="items-center text-center flex flex-col p-6 4 border-solid border-blueGray-200 rounded-b">
             <Link className="login-container" to="/" >
                 <button type="submit" 
             className="bg-blue-400 justify-center items-center rounded-md text-white font-bold border-2 border-sky-600 w-40 h-8 m-4 shadow-xl"

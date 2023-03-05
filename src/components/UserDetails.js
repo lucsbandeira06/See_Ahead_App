@@ -28,11 +28,11 @@ const UserDetails = () => {
     }
 
     return (
-       <div>{ authUser ? <div className="container w-fit mx-auto bg-blue-400 rounded-xl shadow-md p-10 m-10">
+       <div>{ authUser ? <div className="container w-fit mx-auto bg-gradient-to-b from-orange-400 to-rose-800 rounded-xl shadow-md p-10 m-10">
            
-           <p>{`Signed In as ${authUser.email}`}</p>
-            <button onClick={UserSignOut} className="bg-blue-400 rounded-md text-white font-bold border-2 border-sky-600 w-40 h-8 m-4 shadow-xl">Sign out</button>
-            </div> : <div className="container w-fit mx-auto bg-blue-400 rounded-xl shadow-md p-10 m-10"><p>Signed Out</p></div> }
+           <p className="text-center text-lg font-bold text-slate-800">{`Signed In as ${authUser.email}`}</p>
+            <button onClick={UserSignOut} className="bg-blue-400 text-center items-center rounded-md text-slate-100 font-bold border-2 border-gray-700 w-56 h-12 m-6 hover:bg-blue-900">Sign out</button>
+            </div> : <div className="container bg-blue-400 text-center items-center rounded-md text-slate-100 font-bold border-2 border-gray-700 w-56 h-12 m-6 hover:bg-blue-900"><p>Signed Out</p></div> }
        </div>
     )
 }
