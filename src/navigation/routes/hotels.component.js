@@ -116,7 +116,7 @@ export default function HotelHome(){
           </p>
         </div>
         
-        <div className="search-box flex h-20 z-0 w-11/12 mx-auto p-4 -mt-6     rounded-xl bg-gradient-to-r from-orange-300 via-orange-400 to-orange-400 items-center space-x-1 justify-center m-4">
+        <div className="search-box flex sm:flex-col h-20 z-0 w-11/12 mx-auto p-4 -mt-6     rounded-xl bg-gradient-to-r from-orange-300 via-orange-400 to-orange-400 items-center space-x-1 justify-center m-4">
           
             {/* Calling Search box component that contains all API's */}
             <AsyncPaginate
