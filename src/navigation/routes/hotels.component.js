@@ -116,7 +116,7 @@ export default function HotelHome(){
           </p>
         </div>
         
-        <div className="search-box flex sm:flex-col h-20 z-0 w-11/12 mx-auto p-4 -mt-6     rounded-xl bg-gradient-to-r from-orange-300 via-orange-400 to-orange-400 items-center space-x-1 justify-center m-4">
+        <div className="search-box flex h-20 z-0 w-11/12 mx-auto p-4 -mt-6     rounded-xl bg-gradient-to-r from-orange-300 via-orange-400 to-orange-400 items-center space-x-1 justify-center m-4">
           
             {/* Calling Search box component that contains all API's */}
             <AsyncPaginate
@@ -143,7 +143,7 @@ export default function HotelHome(){
            {/* Guests and Rooms container  */}
             <div className="guests-rooms-container mx-auto w-2/12 bg-white rounded-md text-slate-900 border-2 font-bold border-orange-300 text-center font-bold h-10 shadow-xl hover:bg-gray-50">
 
-            <Menu as="div" className="relative">
+            <Menu as="div" className="relative z-10">
             <div>
            <Menu.Button className="inline-flex text-center justify-center px-4 py-2 text-sm font-medium text-gray-700 focus:outline-none ">
             Guests, Rooms
@@ -247,8 +247,8 @@ export default function HotelHome(){
         </div>
 
         {data.destId &&
-        <div className="cards-container w-10/12 -z-10 h-full overflow-auto mx-auto bg-gradient-to-r from-orange-300 via-orange-400 to-orange-400 rounded-xl p-10 m-10">
-          <div className="Destination-cards w-full h-72">
+        <div className="cards-container w-11/12 -z-10 h-96 overflow-auto mx-auto bg-gradient-to-r from-orange-300 via-orange-400 to-orange-400 rounded-xl p-10 m-10">
+          <div className="Destination-cards w-full">
              <Card data= {data} />
           </div>
         </div>

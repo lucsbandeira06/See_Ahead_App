@@ -4,7 +4,7 @@ export default function About() {
 
     return (
         <div>
-            <ul className="flex flex-col text-center border-t-4 border-amber-500 justify-center mx-auto items-center mt-72 text-lg text-gray-800  rounded-3xl">
+            <ul className="flex flex-col text-center border-t-4 border-amber-500 justify-center mx-auto items-center mt-52 text-lg text-gray-800  rounded-3xl">
         <li>
             <h1 className="p-4 mt-4 mb-2 text-4xl font-light text-blue-400">About</h1>
         </li>
