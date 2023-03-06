@@ -38,12 +38,12 @@ This project was only created for study purposes.
 
 ### References
 
-Link router: https://www.w3schools.com/react/react_router.asp
-Tailwind: https://tailwindcss.com
-Firebase authentication: https://firebase.google.com/docs/auth/web/start
-Firestore: https://firebase.google.com/docs/firestore/quickstart
-API callback: https://medium.com/@64rohanmalo/fetch-and-display-data-from-an-api-with-react-228de56bb446
-Rapid API: https://rapidapi.com/hub
+- Link router: https://www.w3schools.com/react/react_router.asp
+- Tailwind: https://tailwindcss.com
+- Firebase authentication: https://firebase.google.com/docs/auth/web/start
+- Firestore: https://firebase.google.com/docs/firestore/quickstart
+- API callback: https://medium.com/@64rohanmalo/fetch-and-display-data-from-an-api-with-react-228de56bb446
+- Rapid API: https://rapidapi.com/hub
 
 
 
