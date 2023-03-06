@@ -44,6 +44,7 @@ This project was only created for study purposes.
 - Firestore: https://firebase.google.com/docs/firestore/quickstart
 - API callback: https://medium.com/@64rohanmalo/fetch-and-display-data-from-an-api-with-react-228de56bb446
 - Rapid API: https://rapidapi.com/hub
+- Cookies consent GDPR: https://cookieconsent.popupsmart.com/#popupsmart_cookie_consent_compliance
 
 
 
