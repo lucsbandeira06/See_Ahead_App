@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BookingHoteloptions } from '../searchBarAPIconfig';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default function Card({data}) {
 
-    const navigate = useNavigate()
 
     const [hotels, setHotels] = useState({})  
      
@@ -49,9 +48,8 @@ export default function Card({data}) {
                 
                 <Link to="/hotelFullDescription">
                 <button type="submit" 
-             
-            className="bg-gradient-to-r from-red-600 via-red-400 mt-30 to-orange-400 rounded-lg text-white font-bold w-fit p-2 h-16 m-4 shadow-xl flex justify-center place-items-center justify-items-end items-center">Make a reservation</button>
-            </Link>
+                className="bg-gradient-to-r from-red-600 via-red-400 mt-30 to-orange-400 rounded-lg text-white font-bold w-fit p-2 h-16 m-4 shadow-xl flex justify-center place-items-center justify-items-end items-center">Make a reservation</button>
+                </Link>
                
             </div>
         ))

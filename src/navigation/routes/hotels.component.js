@@ -30,14 +30,6 @@ export default function HotelHome(){
     //TODO: Pass data to booking.com API and then render places accordingly
     const SearchEngineHandler = () => {
 
-      console.log("check-in", checkIn)
-      console.log("check-out", checkOut)
-      console.log("number of adults", adultCount)
-      console.log("number of children", childrenCount)
-      console.log("number of rooms", roomsCount)
-      // console.log("destination", destinationSearch)
-      console.log("destination_ID", destId)
-      console.log("destination_Type", destType)
       const userPreferences = {
         checkIn: checkIn,
         checkOut: checkOut,
@@ -83,18 +75,6 @@ export default function HotelHome(){
       }
 
   
-    // useEffect(() => {
-    //   const newfilteredDestination = destination.filter((destination) => {
-    //     return destination.name.toLocaleLowerCase().includes(searchField) 
-    // })
-  
-    // setFilteredDestination(newfilteredDestination)
-    // }, [destination, searchField])
-
-    // const OnsearchChange = (event) =>{
-    //     const searchFieldString = event.target.value.toLocaleLowerCase()
-    //     setSearch(searchFieldString)
-    //   }
 
 
     return (
@@ -249,7 +229,7 @@ export default function HotelHome(){
         {data.destId &&
         <div className="cards-container w-11/12 -z-10 h-96 overflow-auto mx-auto bg-gradient-to-r from-orange-300 via-orange-400 to-orange-400 rounded-xl p-10 m-10">
           <div className="Destination-cards w-full">
-             <Card data= {data} />
+             <Card data= {data}/>
           </div>
         </div>
         }
