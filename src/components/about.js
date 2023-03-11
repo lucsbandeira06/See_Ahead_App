@@ -17,7 +17,7 @@ export default function About() {
             <p>On this website you are able to specify your check-in, and check-out dates, as well as the number of people that will be traveling with you.  </p>
 
             <p >Another feature of this website is that it offers weather services, such as forecast and historical weather registries.</p>
-            <p className="pb-6">customers can choose the perfect weather conditions for their trips. Wether it's skiing or surfing, you will be prepared to have fun!  </p>
+            <p className="pb-6">Customers can choose the perfect weather conditions for their trips. Wether it's skiing or surfing, you will be prepared to have fun!  </p>
             </div>
         
      
