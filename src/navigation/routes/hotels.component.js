@@ -10,10 +10,9 @@ import { AsyncPaginate } from "react-select-async-paginate";
 export default function HotelHome(){
   
     // const [searchField, setSearchField] = useState('')
-    const [destinationSearch, setDestinationSearch] = useState([])
     // const [destination, setDestination] = useState([])
 
-
+    const [destinationSearch, setDestinationSearch] = useState([])
     const [checkIn, setCheckIn] = useState("")
     const [checkOut, setCheckOut] = useState("")
     const [destId, setDestId] = useState("")
@@ -40,7 +39,6 @@ export default function HotelHome(){
         destType: destType
       }
       setData(userPreferences)
-        // console.log(userPreferences)
     }
 
     
@@ -65,16 +63,12 @@ export default function HotelHome(){
                   dest_id: `${city.dest_id}`,
                   dest_type: `${city.dest_type}`,
                   label: `${city.label}`,
-                }
-               
-              })
-              
+                }  
+              })          
             }
           }))
           .catch(err => console.error(err))
       }
-
-  
 
 
     return (
@@ -140,6 +134,7 @@ export default function HotelHome(){
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
           >
+
           <Menu.Items className="mt-2 w-56 mx-auto origin-top-right rounded-md bg-white shadow-lg ring-opacity-5 focus:outline-none">
           
             <Menu.Item>
@@ -226,8 +221,8 @@ export default function HotelHome(){
             <button className="bg-blue-400 rounded-md text-white font-bold w-40 h-10 m-4 drop-shadow border-2 border-orange-300 hover:bg-blue-500 hover:border-blue-300" onClick={SearchEngineHandler}>Search</button>
         </div>
 
-        {data.destId &&
-        <div className="cards-container w-11/12 -z-10 h-96 overflow-auto mx-auto bg-gradient-to-r from-orange-300 via-orange-400 to-orange-400 rounded-xl p-10 m-10">
+        {data.destType &&
+        <div className="cards-container w-10/12 h-96 overflow-auto mx-auto bg-gradient-to-r from-orange-300 via-orange-400 to-orange-400 rounded-xl p-10 m-10">
           <div className="Destination-cards w-full">
              <Card data= {data}/>
           </div>

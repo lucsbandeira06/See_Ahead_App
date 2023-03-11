@@ -16,10 +16,7 @@ const Navigation = () => {
             <Outlet/>
            
             </div>
-           
-            {/* <div className="about">
-                <About/>
-            </div> */}
+             
             <div className="footer">
                 <About/>
                 <Footer/>

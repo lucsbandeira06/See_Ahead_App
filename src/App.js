@@ -6,7 +6,8 @@ import HotelHome from "./navigation/routes/hotels.component";
 import Navigation from './navigation/routes/navigation.component'
 import UserDetails from "./components/UserDetails";
 import Card from "./components/card.component";
-import { hotelFullDescription } from "./components/fullDescription";
+import HotelSpecs from "./components/Description"
+
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
           
           <Route path='UserDetails' element={<UserDetails/>}/>
 
-          <Route path='hotelFullDescription' element={hotelFullDescription()}/>
+          <Route path='Description' element={<HotelSpecs/>}/>
 
         </Route>
        
