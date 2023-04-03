@@ -12,9 +12,6 @@ export default function Footer() {
     </span>
     <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-800 sm:mt-0">
         <li>
-            <p  className="mr-4 hover:underline md:mr-6 ">About</p>
-        </li>
-        <li>
         <button className="mr-4 hover:underline md:mr-6 " onClick={() => setShowModal(true)}>Privacy Policy</button>
 
         {showModal ? (

@@ -49,7 +49,7 @@ export default function Card({data}) {
                 <Link className="h-20 place-self-center" to="/Description">
              
                 <button type="submit" 
-                className="bg-gradient-to-r block from-red-600 via-red-400 to-orange-400 rounded-lg text-white font-bold p-2 font-bold w-40 h-18 m-2 shadow-xl place-self-center">Make a reservation</button>
+                className="bg-gradient-to-r block from-red-600 via-red-400 to-orange-400 rounded-lg text-white font-bold p-2 font-bold w-40 h-18 m-2 shadow-xl">Make a reservation</button>
                 </Link>
                
             </div>
